@@ -1,3 +1,14 @@
 # CustomDelegates
 
-This is intended to be a library for direct usage, and learning how delegates and events work together. There are well established .NET libraries that abstracts this behavior away from the developer like MediatR, SignalR, MartenDB,.. and we find it of use to have a grasp of how those language fundemental pieces interact together.
+This is intended for learning purposes, through a console farm game ,,FarmingGoneWild,, to indicate how:
+
+1. delegates and events-
+2. dependency injection containers-
+3. extensions for functional programming workflows-
+4. coming soon..
+
+-work.
+
+There are well established .NET libraries that abstracts this behavior away from the developer like .NET framework,
+MediatR, MartenDB, Linq, etc. We see it as fundamental to understand how the underlying mechanism can look like, and
+therefore we welcome you to play,pause, and debug FarmingGoneWild.
