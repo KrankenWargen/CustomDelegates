@@ -5,7 +5,8 @@ This is intended for learning purposes, through a console farm game ,,FarmingGon
 1. delegates and events-
 2. dependency injection containers-
 3. extensions for functional programming workflows-
-4. coming soon..
+4. CI/CD integration with webhooks for local deployment in docker or k8s
+5. coming soon..
 
 -work.
 
