@@ -1,6 +1,6 @@
 ﻿namespace CustomDelegates.Models;
 
-public class Animal : IAnimal
+public record Animal : IAnimal
 {
     private readonly IEnumerable<Animal> _animals = new List<Animal>();
     private SampleEventDispatcher? _dispatcher;
@@ -15,7 +15,7 @@ public class Animal : IAnimal
     {
     }
 
-    public IEnumerable<int> BallCount { get; set; } = new List<int>();
+    public IEnumerable<int> BallCount { get; init; } = new List<int>();
 
     private void SubscribeAnimals()
     {

@@ -1,24 +1,24 @@
 ﻿namespace CustomDelegates.Models;
 
-public class Dog : Animal
+public record Dog : Animal
 {
     private SampleEventDispatcher? _dispatcher;
 
-    private void TriggerUpdate()
+    private void TriggerUpdate(Dog newDog)
     {
-        Console.WriteLine($"Update: {BallCount.Last()}");
-        _dispatcher?.Invoke(this, BallCount);
+        Console.WriteLine($"Update: {newDog.BallCount.Last()}");
+        _dispatcher?.Invoke(this, newDog.BallCount);
     }
 
     public override void Subscriber(object sender, IEnumerable<int> ballCount)
     {
         if (sender is Cat)
         {
-            var newList = ballCount.ToList();
-            newList.Add(ballCount.TakeLast(2).Sum());
-
-            BallCount = newList;
-            TriggerUpdate();
+            var newDog = this with
+            {
+                BallCount = ballCount.Concat(new[] { ballCount.TakeLast(2).Sum()}).ToList(),
+            };
+            TriggerUpdate(newDog);
         }
     }
 

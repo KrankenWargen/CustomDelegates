@@ -40,9 +40,10 @@ public class Program
         {
             var x = cat.BallCount.ToList();
             x.Add(1);
-
-            cat.BallCount = x.AsReadOnly();
-            return cat;
+            return cat with
+            {
+                BallCount = x.AsReadOnly()
+            };
         }, animal);
     }
 }
