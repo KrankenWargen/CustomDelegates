@@ -1,49 +1,23 @@
-﻿using CustomDelegates;
-using CustomDelegates.Models;
+﻿using CustomDelegates.Farm.Entities;
+using CustomDelegates.Farm.Events;
+using CustomDelegates.Farm.Resources;
+using CustomDelegates.Infrastructure;
 
 namespace CustomDelegates;
 
-class Play
-{
-    delegate int PerformCalculation(int x, int y);
-
-    int oxut => DispatchAfterAdding((x, y) => x + y);
-
-    private int x = 2;
-    private int y = 3;
-
-    private int DispatchAfterAdding(Func<int, int, int> catAction)
-    {
-        return catAction(x, y);
-    }
-}
-
-public delegate void SampleEventDispatcher(object sender, IEnumerable<int> ballCount);
-
-public delegate T AddToCounter<T>(T animal);
-
 public class Program
 {
-    private static void InitialDispatch(AddToCounter<Animal> animalAdding, Animal animal) =>
-        animalAdding(animal).Trigger();
+    private delegate void AddToFarm<in T>(IEnumerable<T> animals);
 
-    private static event SampleEventDispatcher? Dispatcher;
+    private static void InitialDispatch(AddToFarm<IEntity> addAll, IEnumerable<IEntity> animals) => addAll(animals);
 
     public static void Main(string[] args)
     {
-        var animal = new Animal(new List<Animal>
+        InitialDispatch(animals => EventManager.SubscribeWith(animals.ToList()), new List<IEntity>
         {
             new Cat(),
             new Dog()
-        }, Dispatcher);
-        InitialDispatch(cat =>
-        {
-            var x = cat.BallCount.ToList();
-            x.Add(1);
-            return cat with
-            {
-                BallCount = x.AsReadOnly()
-            };
-        }, animal);
+        });
+        EventManager.Publish(new Dog(), new FoodEvent(new Milk()));
     }
 }
