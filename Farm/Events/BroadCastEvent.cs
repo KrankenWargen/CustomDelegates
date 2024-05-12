@@ -2,4 +2,4 @@
 
 namespace CustomDelegates.Farm.Events;
 
-public struct FoodEvent(IFood Food) : IBaseEvent;
+public struct BroadCastEvent(IResource Resource) : IBaseEvent;
