@@ -1,6 +1,6 @@
 # CustomDelegates
 
-This is intended for learning purposes, through a console farm game ,,FarmingGoneWild,, to indicate how:
+This is intended for demonstrating, through a console farm game ,,FarmingGoneWild,, how:
 
 1. delegates and events-
 2. dependency injection containers-
