@@ -1,4 +1,4 @@
-﻿using CustomDelegates.Farm.Entities;
+using CustomDelegates.Farm.Entities;
 using CustomDelegates.Farm.Events;
 using CustomDelegates.Infrastructure;
 

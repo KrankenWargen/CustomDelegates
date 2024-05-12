@@ -1,4 +1,4 @@
-﻿using CustomDelegates.Farm.Entities;
+using CustomDelegates.Models;
 
 namespace CustomDelegates;
 
