@@ -22,14 +22,9 @@ public record Cat : IEntity
     {
         Console.WriteLine("Cat sleeping");
     }
-    
+
     public void Subscription(IEntity sender, BroadCastEvent @event)
     {
         Console.WriteLine("what do you want!!");
-    }
-
-    public void Subscription(object sender, BroadCastEvent @event)
-    {
-        throw new NotImplementedException();
     }
 }

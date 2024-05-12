@@ -1,7 +1,10 @@
-﻿namespace CustomDelegates.Farm;
+﻿using CustomDelegates.Infrastructure;
+
+namespace CustomDelegates.Farm;
 
 public struct Unit : IEquatable<Unit>
 {
+  
     public static readonly Unit Default = new();
     public bool Equals(Unit other) => true;
     public override bool Equals(object? obj) => obj is Unit;
