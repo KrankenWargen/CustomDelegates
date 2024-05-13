@@ -3,13 +3,14 @@ using CustomDelegates.Farm.Events;
 
 namespace CustomDelegates.Infrastructure;
 
-public abstract class EventManager
+public static class EventManager
 {
     private delegate void EventSchema(IEntity entity, IBaseEvent @event);
+
     private static event EventSchema? Handler;
     private static readonly Dictionary<IEntity, List<(EventSchema schema, Type eventType)>> Subscribers = new();
 
-    internal static void SubscribeWith<TEvent>(IEntity entity, Action<IEntity, TEvent> action)
+    public static void SubscribeWith<TEvent>(this IEntity entity, Action<IEntity, TEvent> action)
     {
         // Capture the context in which the function is called in through the EventSchema delegate, and execute
         // the delegate (.Invoke), once the multicast delegate matches its signature with the calling parameters.

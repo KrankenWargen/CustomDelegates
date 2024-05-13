@@ -7,18 +7,18 @@ public record Cat : IEntity
 {
     public Cat()
     {
-        this.Register<FoodEvent>(Subscription);
-        this.Register<BroadCastEvent>(Subscription);
-        this.Register<SleepEvent>(Subscription);
+        this.SubscribeWith<FoodEvent>(FoodSubscription);
+        this.SubscribeWith<SleepEvent>(SleepSubscription);
+        this.SubscribeWith<BroadCastEvent>(Subscription);
     }
 
 
-    private static void Subscription(IEntity sender, FoodEvent @event)
+    private static void FoodSubscription(IEntity sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
 
-    private static void Subscription(IEntity sender, SleepEvent @event)
+    private static void SleepSubscription(IEntity sender, SleepEvent @event)
     {
         Console.WriteLine("Cat sleeping");
     }

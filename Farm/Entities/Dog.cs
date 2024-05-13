@@ -7,11 +7,11 @@ public record Dog : IEntity
 {
     public Dog()
     {
-        EventManager.SubscribeWith<FoodEvent>(this, Subscription);
-        EventManager.SubscribeWith<BroadCastEvent>(this, Subscription);
+        this.SubscribeWith<FoodEvent>(FoodSubscription);
+        this.SubscribeWith<BroadCastEvent>(Subscription);
     }
 
-    public void Subscription(IEntity sender, FoodEvent @event)
+    public void FoodSubscription(IEntity sender, FoodEvent @event)
     {
         Console.WriteLine("Dog food recieved!!");
     }
