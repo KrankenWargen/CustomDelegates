@@ -1,11 +1,11 @@
 ﻿using CustomDelegates.Farm.Events;
 using CustomDelegates.Infrastructure;
 
-namespace CustomDelegates.Farm.Entities;
+namespace CustomDelegates.Farm.Entities.Crops;
 
-public record Cat : IEntity
+public record Rice : IEntity
 {
-    public Cat()
+    public Rice()
     {
         this.SubscribeWith<FoodEvent>(FoodSubscription);
         this.SubscribeWith<SleepEvent>(SleepSubscription);

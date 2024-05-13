@@ -1,4 +1,5 @@
 using CustomDelegates.Farm.Entities;
+using CustomDelegates.Farm.Entities.Animals;
 
 namespace CustomDelegates;
 

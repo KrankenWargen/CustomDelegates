@@ -1,7 +1,7 @@
 ﻿using CustomDelegates.Farm.Events;
 using CustomDelegates.Infrastructure;
 
-namespace CustomDelegates.Farm.Entities;
+namespace CustomDelegates.Farm.Entities.Animals;
 
 public record Dog : IEntity
 {
