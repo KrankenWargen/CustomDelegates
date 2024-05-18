@@ -12,11 +12,15 @@ public class Program
     public static void Main(string[] args)
     {
         var dog = new Dog();
-        InitialDispatch(() => new List<IEntity>
+        InitialDispatch(() =>
         {
-            new Cat(),
-            dog,
-            dog
+            new List<IEntity>
+            {
+                new Cat(),
+                dog,
+                dog
+            };
+            Subscribe.RegisterSubscriptions();
         });
         EventManager.Publish(dog, new SleepEvent());
     }

@@ -3,22 +3,17 @@ using CustomDelegates.Infrastructure;
 
 namespace CustomDelegates.Farm.Entities.Family;
 
-public record Wife: IEntity
+[Subscribe]
+public record Wife : IEntity
 {
-    public Wife()
-    {
-        this.SubscribeWith<FoodEvent>(FoodSubscription);
-        this.SubscribeWith<SleepEvent>(SleepSubscription);
-        this.SubscribeWith<BroadCastEvent>(Subscription);
-    }
 
-
-    private static void FoodSubscription(IEntity sender, FoodEvent @event)
+    [Subscribe]
+   public void FoodSubscription(IEntity sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
 
-    private static void SleepSubscription(IEntity sender, SleepEvent @event)
+    public void SleepSubscription(IEntity sender, SleepEvent @event)
     {
         Console.WriteLine("Cat sleeping");
     }

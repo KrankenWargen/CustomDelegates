@@ -1,53 +1,33 @@
-﻿using CustomDelegates.Farm.Entities;
+﻿using System.Runtime.CompilerServices;
+using CustomDelegates.Farm.Entities;
 using CustomDelegates.Farm.Events;
 
 namespace CustomDelegates.Infrastructure;
 
 public static class EventManager
 {
-    private delegate void EventSchema(IEntity entity, IBaseEvent @event);
+    public delegate void EventSchema(IEntity entity, IBaseEvent @event);
 
     private static event EventSchema? Handler;
-    private static readonly Dictionary<IEntity, List<(EventSchema schema, Type eventType)>> Subscribers = new();
+    private static readonly HashSet<Delegate> Subscribers = [];
 
-    public static void SubscribeWith<TEvent>(this IEntity entity, Action<IEntity, TEvent> action)
+    public static void SubscribeWith<TEvent>(Action<IEntity, TEvent> action) where TEvent : IBaseEvent
     {
-        // Capture the context in which the function is called in through the EventSchema delegate, and execute
-        // the delegate (.Invoke), once the multicast delegate matches its signature with the calling parameters.
-        // The execution happens within the publish method
-        EventSchema eventSchema = (sender, @event) =>
-        {
-            if (@event is TEvent typedEvent)
-            {
-                action(sender, typedEvent);
-            }
-        };
-
         // guarantee a max of single subscription per entity/subscription combination.
-        if (Subscribers.TryGetValue(entity, out var handlers))
+        if (Subscribers.Add(action))
         {
-            if (handlers.Any(entry => entry.eventType == typeof(TEvent))) return;
-            handlers.Add((eventSchema, typeof(TEvent)));
-            Handler += eventSchema;
-        }
-        else
-        {
-            Subscribers.Add(entity, new List<(EventSchema, Type)> { (eventSchema, typeof(TEvent)) });
-            Handler += eventSchema;
+            Handler += (@this, @event) =>
+            {
+                if (@event is TEvent @thisEvent) action(@this, @thisEvent);
+            };
         }
     }
 
-    internal static void UnsubscribeFor<TEvent>(IEntity entity)
+    internal static void UnsubscribeFor(EventSchema action)
     {
-        if (Subscribers.TryGetValue(entity, out var handlers))
+        if (Subscribers.Remove(action))
         {
-            handlers.ForEach(entry =>
-            {
-                if (entry.eventType == typeof(TEvent))
-                {
-                    handlers.Remove(entry);
-                }
-            });
+            Handler -= action;
         }
     }
 
