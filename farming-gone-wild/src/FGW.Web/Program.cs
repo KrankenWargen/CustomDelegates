@@ -1,6 +1,5 @@
 using FGW.Core;
 using FGW.Infrastructure;
-using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder();
 

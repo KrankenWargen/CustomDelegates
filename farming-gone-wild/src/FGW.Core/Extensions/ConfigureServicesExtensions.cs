@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FGW.Core.Farm;
+﻿using FGW.Core.Farm;
 using FGW.Core.Farm.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +11,7 @@ public static class ConfigureServicesExtensions
 
     public static IEnumerable<Unit> Subscribe(this IEnumerable<IEntity> entities,
         Func<IEntity, Unit> subscribe) =>
-        entities.Select(subscribe);
+        entities.Select(subscribe).ToList();
 
     public static void GameLaunch(this IEnumerable<Unit> unit, Action<IEnumerable<Unit>> launch) => launch(unit);
 }

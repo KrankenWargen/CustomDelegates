@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using FGW.Core.Farm.Entities;
+﻿using FGW.Core.Farm.Entities;
 using FGW.Core.Farm.Events;
 
 namespace FGW.Infrastructure;

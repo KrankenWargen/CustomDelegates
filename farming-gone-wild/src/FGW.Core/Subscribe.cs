@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FGW.Core;
+﻿namespace FGW.Core;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class Subscribe : Attribute;

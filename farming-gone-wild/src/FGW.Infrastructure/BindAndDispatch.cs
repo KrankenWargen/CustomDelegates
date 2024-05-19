@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using FGW.Core;
 using FGW.Core.Extensions;
 using FGW.Core.Farm;
@@ -23,7 +18,6 @@ public class BindAndDispatch(IEnumerable<IEntity> entities) : IHostedService
     {
         entities
             .Subscribe(x => RegisterMethods(x.GetType()))
-            .ToArray()
             .GameLaunch(_ => EventManager.Publish(new Dog(), new SleepEvent()));
         return Task.CompletedTask;
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using FGW.Core.Farm.Events;
+﻿using FGW.Core.Farm.Events;
 
 namespace FGW.Core.Farm.Entities.Animals;
 
