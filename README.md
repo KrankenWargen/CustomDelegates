@@ -5,11 +5,12 @@ This is intended for learning purposes, through a console farm game ,,FarmingGon
 1. delegates and events-
 2. dependency injection containers-
 3. extensions for functional programming workflows-
-4. grpc API for farm resources negotiations
-7. no error throw but return results as FP suggests
-8. nosql, or better, a fresh database choice
-9. CI/CD integration with webhooks for local deployment in docker or k8s
-10. coming soon..
+4. attributes for handling the control flow
+5. grpc API for farm resources negotiations
+6. no error throw but return results as FP suggests
+7. nosql, or better, a fresh database choice
+8. CI/CD integration with webhooks for local deployment in docker or k8s
+9. coming soon..
 
 -work.
 

@@ -4,15 +4,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{
 	ProjectSection(SolutionItems) = preProject
 		Directory.Packages.props = Directory.Packages.props
 		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F76A8F8-5F2B-4591-B74A-9DCFB3A20C6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGW.Core", "src\FGW.Core\FGW.Core.csproj", "{834C4C88-3519-46D3-A64B-9D5988570321}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGW.Farm", "src\FGW.Farm\FGW.Farm.csproj", "{834C4C88-3519-46D3-A64B-9D5988570321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGW.Infrastructure", "src\FGW.Infrastructure\FGW.Infrastructure.csproj", "{F4CE98C4-E755-46BC-9C48-E16387F9F40D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGW.Web", "src\FGW.Web\FGW.Web.csproj", "{DAC66378-B0DE-49F0-8113-871A7EC46B90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGW.Market", "src\FGW.Market\FGW.Market.csproj", "{DAC66378-B0DE-49F0-8113-871A7EC46B90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
