@@ -1,5 +1,5 @@
 ﻿using FGW.Core.Farm;
-using FGW.Core.Farm.Entities;
+using FGW.Core.Farm.Entities.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FGW.Core.Extensions;

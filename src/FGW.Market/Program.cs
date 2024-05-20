@@ -1,13 +1,17 @@
 using FGW.Core;
 using FGW.Infrastructure;
+using FGW.Web;
 
 var builder = WebApplication.CreateBuilder();
 
 
 builder.Services
     .AddCoreServices()
-    .AddInfrastructureServices();
+    .AddInfrastructureServices()
+    .AddWebServices();
 
 
 var app = builder.Build();
+
+app.MapControllers();
 app.Run();

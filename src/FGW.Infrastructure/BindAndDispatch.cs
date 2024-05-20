@@ -2,23 +2,27 @@
 using FGW.Core;
 using FGW.Core.Extensions;
 using FGW.Core.Farm;
-using FGW.Core.Farm.Entities;
 using FGW.Core.Farm.Entities.Animals;
+using FGW.Core.Farm.Entities.Interfaces;
 using FGW.Core.Farm.Events;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace FGW.Infrastructure;
 
-
 //TODO disposal after startAsync finishes. 
 //TODO see if can launch the class without launching a server thru app.run
-public class BindAndDispatch(IEnumerable<IEntity> entities) : IHostedService
+public class BindAndDispatch(IServiceProvider serviceProvider) : IHostedService
 {
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        entities
+        using var scope = serviceProvider.CreateScope();
+        scope.ServiceProvider
+            .GetRequiredService<IEnumerable<IEntity>>()
             .Subscribe(x => RegisterMethods(x.GetType()))
             .GameLaunch(_ => EventManager.Publish(new Dog(), new SleepEvent()));
+
+
         return Task.CompletedTask;
     }
 

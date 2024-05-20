@@ -2,4 +2,4 @@
 
 namespace FGW.Core.Farm.Events;
 
-public struct FoodEvent(IFood Food) : IBaseEvent;
+public record struct DonationEvent(double Money, string? Note) : IBaseEvent;

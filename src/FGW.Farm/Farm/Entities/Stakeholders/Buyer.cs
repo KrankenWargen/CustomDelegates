@@ -1,4 +1,5 @@
-﻿using FGW.Core.Farm.Events;
+﻿using FGW.Core.Farm.Entities.Interfaces;
+using FGW.Core.Farm.Events;
 
 namespace FGW.Core.Farm.Entities.Stakeholders;
 
@@ -14,9 +15,5 @@ public record Buyer : IEntity
     {
         Console.WriteLine("Cat sleeping");
     }
-
-    public void Subscription(IEntity sender, BroadCastEvent @event)
-    {
-        Console.WriteLine("what do you want!!");
-    }
+    
 }

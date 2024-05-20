@@ -1,9 +1,10 @@
-﻿using FGW.Core.Farm.Events;
+﻿using FGW.Core.Farm.Entities.Interfaces;
+using FGW.Core.Farm.Events;
 
 namespace FGW.Core.Farm.Entities.Stakeholders;
 
 [Subscribe]
-public record NeighboringFarm: IEntity
+public record NeighboringFarm: IFarmEntity
 {
 
    public void FoodSubscription(IEntity sender, FoodEvent @event)
@@ -16,8 +17,8 @@ public record NeighboringFarm: IEntity
         Console.WriteLine("Cat sleeping");
     }
 
-    public void Subscription(IEntity sender, BroadCastEvent @event)
+    public void Subscription(IEntity sender, BroadCastFarmEvent farmEvent)
     {
-        Console.WriteLine("what do you want!!");
+        throw new NotImplementedException();
     }
 }

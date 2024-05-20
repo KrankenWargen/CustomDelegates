@@ -1,5 +1,4 @@
-﻿using FGW.Core.Farm.Entities;
-using FGW.Core.Farm.Events;
+﻿using FGW.Core.Farm.Entities.Interfaces;
 
 namespace FGW.Infrastructure;
 

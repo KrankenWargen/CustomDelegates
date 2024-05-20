@@ -1,9 +1,10 @@
-﻿using FGW.Core.Farm.Events;
+﻿using FGW.Core.Farm.Entities.Interfaces;
+using FGW.Core.Farm.Events;
 
 namespace FGW.Core.Farm.Entities;
 
 [Subscribe]
-public record class Farmer: IEntity
+public record Farmer : IFarmEntity
 {
     public void FoodSubscription(IEntity sender, FoodEvent @event)
     {
@@ -15,8 +16,13 @@ public record class Farmer: IEntity
         Console.WriteLine("Farmer sleeping");
     }
 
-    public void Subscription(IEntity sender, BroadCastEvent @event)
+    public void DonationSubscription(IEntity sender, DonationEvent @event)
     {
-        Console.WriteLine("what do you want!!");
+        Console.WriteLine($"We received: {@event.Money}");
+    }
+
+    public void Subscription(IEntity sender, BroadCastFarmEvent farmEvent)
+    {
+        Console.WriteLine("Farmer sleeping");
     }
 }
