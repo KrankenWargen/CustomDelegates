@@ -8,12 +8,13 @@ namespace FGW.Web.REST;
 
 [ApiController]
 [Route("/[action]")]
-public class Extern : ControllerBase
+public class Extern(IEventManager eventManager) : ControllerBase
 {
+    
     [HttpPost]
     public void Donte([FromBody] Donation donation)
     {
         if (donation.Money > 0)
-            EventManager.Publish(Farm.GetInstance(), new DonationEvent(donation.Money, donation.Note));
+            eventManager.Publish(Farm.GetInstance(), new DonationEvent(donation.Money, donation.Note));
     }
 }

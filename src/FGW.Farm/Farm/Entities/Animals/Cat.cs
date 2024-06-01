@@ -4,7 +4,7 @@ using FGW.Core.Farm.Events;
 namespace FGW.Core.Farm.Entities.Animals;
 
 [Subscribe]
-public record Cat : IFarmEntity
+public record Cat(string Name, int AgeInMonths) : IFarmEntity
 {
     public void FoodSubscription(IEntity sender, FoodEvent @event)
     {
@@ -13,7 +13,7 @@ public record Cat : IFarmEntity
 
     public void SleepSubscription(IEntity sender, SleepEvent @event)
     {
-        Console.WriteLine("Cat sleeping");
+        Console.WriteLine($"{Name} sleeping");
     }
 
 
@@ -21,4 +21,6 @@ public record Cat : IFarmEntity
     {
         throw new NotImplementedException();
     }
+
+ 
 }

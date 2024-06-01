@@ -2,14 +2,34 @@
 
 namespace FGW.Infrastructure;
 
-public static class EventManager
+public interface IEventManager
+{
+    public void SubscribeWith<TEvent>(Action<IEntity, TEvent> action) where TEvent : IBaseEvent;
+    public void Publish(IEntity entity, IBaseEvent @event);
+    public void UnsubscribeFor(EventManager.EventSchema action);
+}
+
+internal class DelegateEqualityComparer : IEqualityComparer<Delegate>
+{
+    public bool Equals(Delegate x, Delegate y)
+    {
+        return ReferenceEquals(x, y) || (x.Target.Equals(y.Target) && x.Method == y.Method);
+    }
+
+    public int GetHashCode(Delegate obj)
+    {
+        return HashCode.Combine(obj.Method, obj.Target);
+    }
+}
+
+public class EventManager : IEventManager
 {
     public delegate void EventSchema(IEntity entity, IBaseEvent @event);
 
     private static event EventSchema? Handler;
-    private static readonly HashSet<Delegate> Subscribers = [];
+    private readonly HashSet<Delegate> Subscribers = new(new DelegateEqualityComparer());
 
-    public static void SubscribeWith<TEvent>(Action<IEntity, TEvent> action) where TEvent : IBaseEvent
+    public void SubscribeWith<TEvent>(Action<IEntity, TEvent> action) where TEvent : IBaseEvent
     {
         // guarantee a max of single subscription per entity/subscription combination.
         if (Subscribers.Add(action))
@@ -21,7 +41,7 @@ public static class EventManager
         }
     }
 
-    internal static void UnsubscribeFor(EventSchema action)
+    public void UnsubscribeFor(EventSchema action)
     {
         if (Subscribers.Remove(action))
         {
@@ -30,7 +50,7 @@ public static class EventManager
     }
 
 
-    public static void Publish(IEntity entity, IBaseEvent @event) => Handler?.Invoke(entity, @event);
+    public void Publish(IEntity entity, IBaseEvent @event) => Handler?.Invoke(entity, @event);
 
     public static void Publish(IEntity entity, List<IBaseEvent> @events) =>
         @events.ForEach(@event => Handler?.Invoke(entity, @event));
