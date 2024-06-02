@@ -6,12 +6,12 @@ namespace FGW.Core.Farm.Entities.Threats;
 [Subscribe]
 public record Termite: IThreat
 {
-   public void FoodSubscription(IEntity sender, FoodEvent @event)
+   public void FoodSubscription(object sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
 
-    public void SleepSubscription(IEntity sender, SleepEvent @event)
+    public void SleepSubscription(object sender, SleepEvent @event)
     {
         Console.WriteLine("Cat sleeping");
     }

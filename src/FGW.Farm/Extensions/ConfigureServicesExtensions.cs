@@ -6,15 +6,19 @@ namespace FGW.Core.Extensions;
 
 public static class ConfigureServicesExtensions
 {
-    internal static IServiceCollection AddSubscribers<TAEntity>(
+    internal static IServiceCollection AddSubscribers<TSubscribe>(
         this IServiceCollection services,
-        TAEntity entity
-    ) where TAEntity : class, IEntity =>
-        services.AddScoped<IEntity>(_ => entity);
+        TSubscribe implementation
+    ) where TSubscribe : class, IEntity =>
+        services.AddScoped<ISubscribe>(_ => implementation);
 
+    public static IServiceCollection AddSubscribers<TInterface, TSubscribe>(
+        this IServiceCollection services
+    ) where TInterface : class, ISubscribe where TSubscribe : class, TInterface =>
+        services.AddScoped<TInterface, TSubscribe>();
 
-    public static bool Subscribe(this IEnumerable<IEntity> entities,
-        Func<IEntity, Unit> subscribeEntity) =>
+    public static bool Subscribe(this IEnumerable<ISubscribe> entities,
+        Func<ISubscribe, Unit> subscribeEntity) =>
         entities.Select(subscribeEntity).All(x => x == Unit.Default);
 
     public static void GameLaunch(this bool subscribedAll, Action launch)

@@ -6,21 +6,20 @@ namespace FGW.Core.Farm.Entities.Animals;
 [Subscribe]
 public record Cat(string Name, int AgeInMonths) : IFarmEntity
 {
-    public void FoodSubscription(IEntity sender, FoodEvent @event)
+    public void FoodSubscription(object sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
 
-    public void SleepSubscription(IEntity sender, SleepEvent @event)
+    public void SleepSubscription(object sender, SleepEvent @event)
     {
         Console.WriteLine($"{Name} sleeping");
+        if (Name == "Nono") FarmManager.GetInstance().Publish(this, new RIPEvent());
     }
 
 
-    public void Subscription(IEntity sender, BroadCastFarmEvent farmEvent)
+    public void Subscription(object sender, BroadCastFarmEvent farmEvent)
     {
         throw new NotImplementedException();
     }
-
- 
 }

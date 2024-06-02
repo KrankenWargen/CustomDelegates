@@ -19,12 +19,12 @@ public record Buyer : IEntity
 {
     public required Kind Type { get; init; }
 
-    public void FoodSubscription(IEntity sender, FoodEvent @event)
+    public void FoodSubscription(object sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
 
-    public void SleepSubscription(IEntity sender, SleepEvent @event)
+    public void SleepSubscription(object sender, SleepEvent @event)
     {
         Console.WriteLine($"{Type} sleeping");
     }

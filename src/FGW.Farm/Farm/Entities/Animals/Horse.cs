@@ -7,18 +7,18 @@ namespace FGW.Core.Farm.Entities.Animals;
 public record Horse : IFarmEntity
 {
     
-   public void FoodSubscription(IEntity sender, FoodEvent @event)
+   public void FoodSubscription(object sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
 
-    public void SleepSubscription(IEntity sender, SleepEvent @event)
+    public void SleepSubscription(object sender, SleepEvent @event)
     {
         Console.WriteLine("Horse sleeping");
     }
 
 
-    public void Subscription(IEntity sender, BroadCastFarmEvent farmEvent)
+    public void Subscription(object sender, BroadCastFarmEvent farmEvent)
     {
         throw new NotImplementedException();
     }
