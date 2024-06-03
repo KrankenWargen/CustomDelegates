@@ -1,13 +1,12 @@
 ﻿using FGW.Core.Farm.Entities.Interfaces;
 using FGW.Core.Farm.Events;
 
-namespace FGW.Core.Farm.Entities.Crops;
+namespace FGW.Core.Farm.Entities.Threats;
 
 [Subscribe]
-public record Onion : ICrop
+public record Wolf : IThreat
 {
-
-   public void FoodSubscription(object sender, FoodEvent @event)
+    public void FoodSubscription(object sender, FoodEvent @event)
     {
         Console.WriteLine("Cat food received!!");
     }
