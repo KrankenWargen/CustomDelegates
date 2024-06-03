@@ -1,6 +1,6 @@
-﻿using FGW.Core.Farm.Events;
+﻿using FGW.Farm.Farm.Events;
 
-namespace FGW.Core.Farm.Entities.Interfaces;
+namespace FGW.Farm.Farm.Entities.Interfaces;
 
 public interface IFarmEntity : IEntity
 {

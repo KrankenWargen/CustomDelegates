@@ -1,7 +1,7 @@
-﻿using FGW.Core.Farm.Entities.Interfaces;
-using FGW.Core.Farm.Events;
+﻿using FGW.Farm.Farm.Entities.Interfaces;
+using FGW.Farm.Farm.Events;
 
-namespace FGW.Core.Farm.Entities.Stakeholders;
+namespace FGW.Farm.Farm.Entities.Stakeholders;
 
 [Subscribe]
 public record NeighboringFarm: IFarmEntity

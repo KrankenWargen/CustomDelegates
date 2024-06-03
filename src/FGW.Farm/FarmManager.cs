@@ -1,9 +1,9 @@
 ﻿using System.Collections.Concurrent;
-using FGW.Core.Farm.Entities.Animals;
-using FGW.Core.Farm.Entities.Interfaces;
-using FGW.Core.Farm.Events;
+using FGW.Farm.Farm.Entities.Animals;
+using FGW.Farm.Farm.Entities.Interfaces;
+using FGW.Farm.Farm.Events;
 
-namespace FGW.Core;
+namespace FGW.Farm;
 
 public class FarmManager
 {

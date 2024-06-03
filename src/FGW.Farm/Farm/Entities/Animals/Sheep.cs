@@ -1,8 +1,8 @@
 ﻿global using System;
-using FGW.Core.Farm.Entities.Interfaces;
-using FGW.Core.Farm.Events;
+using FGW.Farm.Farm.Entities.Interfaces;
+using FGW.Farm.Farm.Events;
 
-namespace FGW.Core.Farm.Entities.Animals;
+namespace FGW.Farm.Farm.Entities.Animals;
 
 [Subscribe]
 public record Sheep : IFarmEntity

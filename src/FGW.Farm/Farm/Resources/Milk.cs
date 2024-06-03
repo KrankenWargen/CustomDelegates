@@ -1,5 +1,5 @@
-﻿using FGW.Core.Farm.Entities.Interfaces;
+﻿using FGW.Farm.Farm.Entities.Interfaces;
 
-namespace FGW.Core.Farm.Resources;
+namespace FGW.Farm.Farm.Resources;
 
 public record Milk : IFood;

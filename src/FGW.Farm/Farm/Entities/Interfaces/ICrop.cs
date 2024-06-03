@@ -1,4 +1,4 @@
-﻿namespace FGW.Core.Farm.Entities.Interfaces;
+﻿namespace FGW.Farm.Farm.Entities.Interfaces;
 
 public interface ICrop
 {

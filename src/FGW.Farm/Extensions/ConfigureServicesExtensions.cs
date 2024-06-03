@@ -1,8 +1,8 @@
-﻿using FGW.Core.Farm;
-using FGW.Core.Farm.Entities.Interfaces;
+﻿using FGW.Farm.Farm;
+using FGW.Farm.Farm.Entities.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FGW.Core.Extensions;
+namespace FGW.Farm.Extensions;
 
 public static class ConfigureServicesExtensions
 {

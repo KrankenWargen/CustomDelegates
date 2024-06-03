@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <WarningsAsErrors>Nullable</WarningsAsErrors>
-        <RootNamespace>FGW.Core</RootNamespace>
+        <RootNamespace>FGW.Farm</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

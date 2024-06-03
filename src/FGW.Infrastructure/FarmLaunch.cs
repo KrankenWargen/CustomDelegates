@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using FGW.Core;
-using FGW.Core.Extensions;
-using FGW.Core.Farm;
-using FGW.Core.Farm.Entities.Animals;
-using FGW.Core.Farm.Entities.Interfaces;
-using FGW.Core.Farm.Events;
+using FGW.Farm;
+using FGW.Farm.Extensions;
+using FGW.Farm.Farm;
+using FGW.Farm.Farm.Entities.Animals;
+using FGW.Farm.Farm.Entities.Interfaces;
+using FGW.Farm.Farm.Events;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

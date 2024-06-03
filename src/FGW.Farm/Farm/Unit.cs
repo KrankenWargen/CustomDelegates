@@ -1,4 +1,4 @@
-﻿namespace FGW.Core.Farm;
+﻿namespace FGW.Farm.Farm;
 
 public struct Unit : IEquatable<Unit>
 {

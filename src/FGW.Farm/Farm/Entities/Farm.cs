@@ -1,6 +1,6 @@
-﻿using FGW.Core.Farm.Entities.Interfaces;
+﻿using FGW.Farm.Farm.Entities.Interfaces;
 
-namespace FGW.Core.Farm.Entities;
+namespace FGW.Farm.Entities;
 
 public record Farm : IEntity
 {

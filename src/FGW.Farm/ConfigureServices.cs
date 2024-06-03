@@ -1,11 +1,11 @@
-using FGW.Core.Extensions;
-using FGW.Core.Farm.Entities;
-using FGW.Core.Farm.Entities.Animals;
-using FGW.Core.Farm.Entities.Interfaces;
-using FGW.Core.Farm.Entities.Stakeholders;
+using FGW.Farm.Extensions;
+using FGW.Farm.Farm.Entities;
+using FGW.Farm.Farm.Entities.Animals;
+using FGW.Farm.Farm.Entities.Interfaces;
+using FGW.Farm.Farm.Entities.Stakeholders;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FGW.Core;
+namespace FGW.Farm;
 
 public static class ConfigureServices
 {
