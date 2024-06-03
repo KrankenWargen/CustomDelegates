@@ -5,53 +5,51 @@ using FGW.Core.Farm.Events;
 
 namespace FGW.Core;
 
-internal class DelegateEqualityComparer : IEqualityComparer<Delegate>
-{
-    public bool Equals(Delegate? x, Delegate? y)
-    {
-        return ReferenceEquals(x, y) || (
-            x != null &&
-            y != null &&
-            x.Target != null &&
-            x.Target.Equals(y.Target) &&
-            x.Method == y.Method
-        );
-    }
-
-    public int GetHashCode(Delegate obj)
-    {
-        return HashCode.Combine(obj.Method, obj.Target);
-    }
-}
-
 public class FarmManager
 {
     private event EventHandler<IBaseEvent>? Handler;
     private static readonly Lazy<FarmManager> Event = new();
 
-    private readonly ConcurrentDictionary<Delegate, EventHandler<IBaseEvent>> _subscribers =
-        new(new DelegateEqualityComparer());
+    private readonly ConcurrentDictionary<ISubscribe, List<EventHandler<IBaseEvent>>> _subscribers = new();
 
     public static FarmManager GetInstance() => Event.Value;
 
     public void SubscribeWith<TEvent>(EventHandler<TEvent> action) where TEvent : IBaseEvent
     {
         // guarantee a max of single subscription per entity/subscription combination.
-        if (_subscribers.TryGetValue(action, out var _)) return;
+        if (action.Target is not ISubscribe entity || (
+                _subscribers.TryGetValue(entity, out var eventRecievers) &&
+                eventRecievers.Any(x => x.Method == action.Method)
+            )
+           ) return;
+        //keep track of subscribed functions for a certain entity, to have any chance of removing/unsubscribing them from the handler later on
+        _subscribers.AddOrUpdate(
+            entity,
+            x => [OnHandler],
+            (x, list) =>
+            {
+                list.Add(OnHandler);
+                return list;
+            }
+        );
+        //subscribe a delegate that upon invocation resolves the Action delegate based on a
+        //condition. (whether the Action [TEvent] is the same as the invoked one)  
+        Handler += OnHandler;
+        return;
 
-        _subscribers[action] = (@this, @event) =>
+        // local function/delegate
+        void OnHandler(object? @this, IBaseEvent @event)
         {
-            if (@event is TEvent thisEvent) action(@this, thisEvent);
-        };
-        Handler += _subscribers[action];
+            if (_subscribers.ContainsKey(entity) && @event is TEvent thisEvent) action(@this, thisEvent);
+        }
     }
 
-    public void UnsubscribeFor<TEvent>(EventHandler<TEvent> action) where TEvent : IBaseEvent
+    public void UnsubscribeFor(ISubscribe? entity)
     {
-        if (!_subscribers.TryGetValue(action, out var registered)) return;
-        Handler -= registered;
-        _subscribers.Remove(action, out var _);
-       Publish(new Dog(), new SleepEvent());
+        if (entity is null || !_subscribers.TryGetValue(entity, out var registered)) return;
+        _subscribers.Remove(entity, out var _);
+        registered.ForEach(x => Handler -= x);
+        Publish(new Dog(), new FoodEvent());
     }
 
     public void Publish(object? entity, IBaseEvent @event) => Handler?.Invoke(entity, @event);
