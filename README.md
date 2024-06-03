@@ -1,16 +1,15 @@
 # CustomDelegates
 
-This is intended for learning purposes, through a console farm game ,,FarmingGoneWild,, to indicate how:
+This is intended for demonstrating, through a console farm game ,,FarmingGoneWild,, how:
 
 1. delegates and events-
 2. dependency injection containers-
 3. extensions for functional programming workflows-
 4. attributes for handling the control flow
-5. grpc API for farm resources negotiations
-6. no error throw but return results as FP suggests
-7. nosql, or better, a fresh database choice
-8. CI/CD integration with webhooks for local deployment in docker or k8s
-9. coming soon..
+5. no error throw but return results as FP suggests
+6. nosql, or better, a fresh database choice
+7. CI/CD integration with webhooks for local deployment in docker or k8s
+8. coming soon..
 
 -work.
 
