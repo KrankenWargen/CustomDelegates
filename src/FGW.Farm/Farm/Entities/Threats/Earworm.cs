@@ -3,7 +3,7 @@ using FGW.Farm.Farm.Events;
 
 namespace FGW.Farm.Farm.Entities.Threats;
 
-[Subscribe]
+
 public record Earworm : IThreat
 {
     public void FoodSubscription(object sender, FoodEvent @event)

@@ -3,7 +3,7 @@ using FGW.Farm.Farm.Events;
 
 namespace FGW.Farm.Farm.Entities.Animals;
 
-[Subscribe]
+
 public record Cow : IFarmEntity
 {
 

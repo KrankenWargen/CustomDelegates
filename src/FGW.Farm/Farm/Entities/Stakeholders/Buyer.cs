@@ -14,7 +14,7 @@ public enum Kind
     Massive
 }
 
-[Subscribe]
+
 public record Buyer : IEntity
 {
     public required Kind Type { get; init; }

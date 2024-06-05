@@ -3,7 +3,7 @@ using FGW.Farm.Farm.Events;
 
 namespace FGW.Farm.Farm.Entities;
 
-[Subscribe]
+
 public record Farmer : IFarmEntity
 {
     public void FoodSubscription(object sender, FoodEvent @event)

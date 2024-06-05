@@ -9,6 +9,7 @@ public static class ConfigureServices
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
         services.AddHostedService<FarmLaunch>();
+        services.AddScoped<ISubscribe, FarmLaunch>();
         return services;
     }
 }

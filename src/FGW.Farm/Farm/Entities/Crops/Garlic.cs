@@ -3,7 +3,7 @@ using FGW.Farm.Farm.Events;
 
 namespace FGW.Farm.Farm.Entities.Crops;
 
-[Subscribe]
+
 public record Garlic : ICrop
 {
 
