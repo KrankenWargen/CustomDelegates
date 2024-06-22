@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FGW.Farm;
+namespace SimpleSend;
 
 public static class ConfigureServices
 {

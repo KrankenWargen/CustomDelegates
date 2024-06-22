@@ -1,4 +1,4 @@
-﻿namespace FGW.Farm;
+﻿namespace SimpleSend;
 
 public interface IBaseEvent
 {

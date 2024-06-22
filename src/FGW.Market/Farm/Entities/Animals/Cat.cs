@@ -1,7 +1,6 @@
-﻿using FGW.Farm;
-using FGW.Farm.Extensions;
-using FGW.Web.Farm.Entities.Interfaces;
+﻿using FGW.Web.Farm.Entities.Interfaces;
 using FGW.Web.Farm.Events;
+using SimpleSend;
 
 namespace FGW.Web.Farm.Entities.Animals;
 
@@ -26,12 +25,6 @@ public record Cat(IDispatcher Dispatcher) : IFarmEntity
     }
 
     public void SleepSubscription(IEntity sender, SleepEvent @event)
-    {
-        Console.WriteLine($"{Name} sleeping");
-        if (Name == "Nono") Dispatcher.Send(this, new RIPEvent());
-    }
-
-    public void SleepSubscription(IEntity sender, SleepEvent @event, FoodEvent @event2)
     {
         Console.WriteLine($"{Name} sleeping");
         if (Name == "Nono") Dispatcher.Send(this, new RIPEvent());

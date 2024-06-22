@@ -1,14 +1,12 @@
 ﻿using System.Collections.Concurrent;
 
-namespace FGW.Farm;
+namespace SimpleSend;
 
 public class Dispatcher : IDispatcher
 {
     private delegate void SubscriberMethod(params object[] @params);
 
     private event SubscriberMethod? Handler;
-    private static readonly Lazy<Dispatcher> Event = new();
-
     private readonly ConcurrentDictionary<ISubscribe, HashSet<SubscriberMethod>> _subscribers = new();
 
     public void SubscribeWith(Delegate action)

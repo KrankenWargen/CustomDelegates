@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using FGW.Farm.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SimpleSend.Extensions;
 using Delegate = System.Delegate;
 
-namespace FGW.Farm;
+namespace SimpleSend;
 
 //TODO see if can launch the class without launching a server thru app.run
 internal class FarmLaunch(IServiceProvider serviceProvider, IDispatcher dispatcher) : IHostedService, ISubscribe

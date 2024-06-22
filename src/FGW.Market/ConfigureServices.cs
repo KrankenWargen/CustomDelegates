@@ -1,5 +1,5 @@
-﻿using FGW.Farm.Extensions;
-using FGW.Web.Farm.Entities.Animals;
+﻿using FGW.Web.Farm.Entities.Animals;
+using SimpleSend.Extensions;
 
 namespace FGW.Web;
 

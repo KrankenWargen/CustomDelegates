@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace FGW.Farm;
+namespace SimpleSend;
 
 public static class Helper
 {

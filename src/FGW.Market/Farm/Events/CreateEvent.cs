@@ -1,4 +1,4 @@
-﻿using FGW.Farm;
+﻿using SimpleSend;
 
 namespace FGW.Web.Farm.Events;
 
