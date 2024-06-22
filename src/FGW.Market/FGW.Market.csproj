@@ -9,6 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="../FGW.Infrastructure/FGW.Infrastructure.csproj"/>
+      <ProjectReference Include="..\SimpleSend\SimpleSend.csproj" />
     </ItemGroup>
 </Project>
