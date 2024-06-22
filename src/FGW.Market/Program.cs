@@ -10,7 +10,7 @@ builder.Services
     .AddCoreServices()
     .AddWebServices();
 
-
+//TODO make it work
 var app = builder.Build();
 
 app.MapControllers();
