@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSend", "src\SimpleSend\SimpleSend.csproj", "{834C4C88-3519-46D3-A64B-9D5988570321}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSend", "SimpleSend\SimpleSend.csproj", "{834C4C88-3519-46D3-A64B-9D5988570321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGW.Market", "src\FGW.Market\FGW.Market.csproj", "{DAC66378-B0DE-49F0-8113-871A7EC46B90}"
 EndProject
