@@ -1,7 +1,7 @@
 ﻿namespace SimpleSend;
 
-public interface IOrchestrate
+public interface ISender
 {
     internal void SubscribeWith(Delegate action);
-    public void Send(params object[] @params);
+    public Task Send(params object[] @params);
 }

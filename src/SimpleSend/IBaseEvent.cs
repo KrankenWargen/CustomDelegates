@@ -1,5 +1,3 @@
 ﻿namespace SimpleSend;
 
-public interface IBaseEvent
-{
-}
+public interface IBaseEvent;

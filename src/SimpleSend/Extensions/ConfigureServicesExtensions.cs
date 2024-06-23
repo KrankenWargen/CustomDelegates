@@ -10,8 +10,6 @@ public static class ConfigureServicesExtensions
         services.AddScoped<ISubscribe, TImplementation>();
 
     internal static bool Register(this IEnumerable<ISubscribe> entities,
-        Func<ISubscribe, Unit> subscribeMethod) =>
-        entities.Select(subscribeMethod).All(x => x == Unit.Default);
-
-    public static void GameLaunch(this object x, Action launch) => launch.Invoke();
+        Func<ISubscribe, bool> subscribeMethod) =>
+        entities.Select(subscribeMethod).All(x => x);
 }

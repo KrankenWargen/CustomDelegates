@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder();
 
 
 builder.Services
-    .AddCoreServices()
+    .AddSimpleSend()
     .AddWebServices();
 
 var app = builder.Build();
@@ -16,7 +16,7 @@ app.MapControllers();
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapGet("/", (IOrchestrate orchestrate) =>
+    endpoints.MapGet("/", (ISender orchestrate) =>
     {
         orchestrate.Send(new Dog(), new SleepEvent());
         return "Events dispatched!";

@@ -7,7 +7,8 @@ using Delegate = System.Delegate;
 namespace SimpleSend;
 
 //TODO see if can launch the class without launching a server thru app.run
-internal class RegistrationService(IServiceProvider serviceProvider, IOrchestrate orchestrate) : IHostedService, ISubscribe
+internal class SimpleRegistrationService(IServiceProvider serviceProvider, ISender sender)
+    : IHostedService, ISubscribe
 {
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -20,7 +21,7 @@ internal class RegistrationService(IServiceProvider serviceProvider, IOrchestrat
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
-    private Unit Methods(ISubscribe entity)
+    private bool Methods(ISubscribe entity)
     {
         var type = entity.GetType();
         type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
@@ -44,7 +45,7 @@ internal class RegistrationService(IServiceProvider serviceProvider, IOrchestrat
                 var actionDelegate = Delegate.CreateDelegate(
                     Helper.GetDelegateType(method), entity,
                     method);
-                var callSubscriptionsMethod = typeof(RegistrationService).GetMethod(
+                var callSubscriptionsMethod = typeof(SimpleRegistrationService).GetMethod(
                     nameof(CallSubscriptions),
                     BindingFlags.NonPublic | BindingFlags.Instance);
                 callSubscriptionsMethod!
@@ -52,12 +53,11 @@ internal class RegistrationService(IServiceProvider serviceProvider, IOrchestrat
             });
 
 
-        return Unit.Default;
+        return true;
     }
-
 
     private void CallSubscriptions(Delegate @this)
     {
-        orchestrate.SubscribeWith(@this);
+        sender.SubscribeWith(@this);
     }
 }

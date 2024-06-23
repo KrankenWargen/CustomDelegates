@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace SimpleSend;
 
-public static class Helper
+internal static class Helper
 {
     public static Type GetDelegateType(MethodInfo methodInfo)
     {
