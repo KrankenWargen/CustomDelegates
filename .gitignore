@@ -2,8 +2,8 @@
 bin/*
 .idea/*
 
-src/*/obj/*
-src/*/bin/*
+*/obj/*
+*/bin/*
 
 /Scratch/*
-/src/FGW.Market/*
+/FGW.Market/*
