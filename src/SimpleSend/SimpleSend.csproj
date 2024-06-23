@@ -6,6 +6,12 @@
         <Nullable>enable</Nullable>
         <WarningsAsErrors>Nullable</WarningsAsErrors>
         <RootNamespace>SimpleSend</RootNamespace>
+        <Version>1.0.1</Version>
+        <Authors>Mahmoud Elgohary</Authors>
+        <Description>Simple event dispatcher library</Description>
+        <PackageTags>simple event dispatch sourcing mediator pattern mediatR subscribe publish</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,4 +20,7 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 </Project>
