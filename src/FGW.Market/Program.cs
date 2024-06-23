@@ -10,26 +10,16 @@ builder.Services
     .AddCoreServices()
     .AddWebServices();
 
-//TODO make it work
 var app = builder.Build();
 
 app.MapControllers();
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapGet("/", async context =>
+    endpoints.MapGet("/", (IOrchestrate orchestrate) =>
     {
-        using (var scope = builder.Services.BuildServiceProvider().CreateScope())
-        {
-            var dispatcher = scope.ServiceProvider.GetRequiredService<IDispatcher>();
-            dispatcher.Send(new Dog(), new SleepEvent());
-        }
-        await context.Response.WriteAsync("Events dispatched!");
+        orchestrate.Send(new Dog(), new SleepEvent());
+        return "Events dispatched!";
     });
 });
 app.Run();
-
-
-
-
-

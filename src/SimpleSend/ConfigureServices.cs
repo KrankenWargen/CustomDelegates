@@ -6,8 +6,8 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
-        services.AddHostedService<FarmLaunch>();
-        services.AddSingleton<IDispatcher, Dispatcher>();
+        services.AddHostedService<RegistrationService>();
+        services.AddSingleton<IOrchestrate, Orchestrator>();
 
         // .AddSubscribers(new Dog())
         // .AddSubscribers(new Horse())

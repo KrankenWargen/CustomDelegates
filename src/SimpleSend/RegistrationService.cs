@@ -7,7 +7,7 @@ using Delegate = System.Delegate;
 namespace SimpleSend;
 
 //TODO see if can launch the class without launching a server thru app.run
-internal class FarmLaunch(IServiceProvider serviceProvider, IDispatcher dispatcher) : IHostedService, ISubscribe
+internal class RegistrationService(IServiceProvider serviceProvider, IOrchestrate orchestrate) : IHostedService, ISubscribe
 {
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -44,7 +44,7 @@ internal class FarmLaunch(IServiceProvider serviceProvider, IDispatcher dispatch
                 var actionDelegate = Delegate.CreateDelegate(
                     Helper.GetDelegateType(method), entity,
                     method);
-                var callSubscriptionsMethod = typeof(FarmLaunch).GetMethod(
+                var callSubscriptionsMethod = typeof(RegistrationService).GetMethod(
                     nameof(CallSubscriptions),
                     BindingFlags.NonPublic | BindingFlags.Instance);
                 callSubscriptionsMethod!
@@ -58,6 +58,6 @@ internal class FarmLaunch(IServiceProvider serviceProvider, IDispatcher dispatch
 
     private void CallSubscriptions(Delegate @this)
     {
-        dispatcher.SubscribeWith(@this);
+        orchestrate.SubscribeWith(@this);
     }
 }

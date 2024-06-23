@@ -2,7 +2,7 @@
 
 namespace SimpleSend;
 
-public class Dispatcher : IDispatcher
+internal class Orchestrator : IOrchestrate
 {
     private delegate void SubscriberMethod(params object[] @params);
 

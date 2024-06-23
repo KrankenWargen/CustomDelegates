@@ -4,7 +4,7 @@ using SimpleSend;
 
 namespace FGW.Web.Farm.Entities.Animals;
 
-public record Cat(IDispatcher Dispatcher) : IFarmEntity
+public record Cat(IOrchestrate Orchestrate) : IFarmEntity
 {
 
     private List<Cat> cats = [];
@@ -13,7 +13,7 @@ public record Cat(IDispatcher Dispatcher) : IFarmEntity
 
     public void Create(object sender, CreateEvent @event)
     {
-        cats.Add(new Cat(Dispatcher)
+        cats.Add(new Cat(Orchestrate)
         {
             Name = @event.Name
         });
@@ -27,7 +27,7 @@ public record Cat(IDispatcher Dispatcher) : IFarmEntity
     public void SleepSubscription(IEntity sender, SleepEvent @event)
     {
         Console.WriteLine($"{Name} sleeping");
-        if (Name == "Nono") Dispatcher.Send(this, new RIPEvent());
+        if (Name == "Nono") Orchestrate.Send(this, new RIPEvent());
     }
 
     public void Subscription(object sender, BroadCastFarmEvent farmEvent)
