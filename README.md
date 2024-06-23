@@ -1,18 +1,34 @@
-# CustomDelegates
+### SimpleSend
 
-This is intended for demonstrating, through a console farm game ,,FarmingGoneWild,, how:
+A lightweight general purpose library for implementing the mediator pattern through the language
+delegates. 
 
-1. delegates and events-
-2. dependency injection containers-
-3. extensions for functional programming workflows-
-4. attributes for handling the control flow
-5. no error throw but return results as FP suggests
-6. nosql, or better, a fresh database choice
-7. CI/CD integration with webhooks for local deployment in docker or k8s
-8. coming soon..
 
--work.
+#### Quickstart
 
-There are well established .NET libraries that abstracts this behavior away from the developer like .NET framework,
-MediatR, MartenDB, Linq, etc. We see it as fundamental to understand how the underlying mechanism can look like, and
-therefore we welcome you to play,pause, and debug FarmingGoneWild.
+```csharp
+// register SimpleSend
+builder.Services.AddSimpleSend();
+
+// implement the interface ISubscribe for classes which contain event handlers
+public record Cat : ISubscribe
+{
+  // make sure that the event must be the last parameter in the method (sync or async), otherwise the method is ignored for the current version 1.0.0.  
+  // other parameters can be of any number/type  
+  public void SleepSubscription(object sender, SleepEvent @event)
+    {
+        Console.WriteLine($"{Name} sleeping");
+    }
+
+}
+
+// register the subscriber classes
+services.AddSubscribers<Cat>();
+
+// implement the interface IBaseEvent for event types
+public struct SleepEvent : IBaseEvent;
+
+// use the send method for sync or async publishing
+ISender sender => sender.Send(new Dog(), new SleepEvent());   
+```
+
