@@ -6,4 +6,4 @@ src/*/obj/*
 src/*/bin/*
 
 /Scratch/*
-/src/FGW.Market/FGW.Market.csproj
+/src/FGW.Market/*
